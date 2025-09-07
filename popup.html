@@ -384,8 +384,11 @@
 <body>
   <h3>Login Manager</h3>
   <div>
-    <input id="instance-name" placeholder="Add Instance Name">
-    <button id="add-instance">Add Instance</button>
+  <input id="instance-name" placeholder="Add Instance Name">
+  <button id="add-instance">Add Instance</button>
+  <button id="export-data" style="background:#2563eb;color:#fff;border:none;border-radius:8px;padding:8px 18px;margin-left:8px;">Export Data</button>
+  <input type="file" id="import-file" style="display:none;" accept="application/json">
+  <button id="import-data" style="background:#2563eb;color:#fff;border:none;border-radius:8px;padding:8px 18px;margin-left:8px;">Import Data</button>
   </div>
   <table id="instances-table" style="width:100%;margin-top:18px;border-collapse:collapse;">
     <thead>
@@ -424,4 +427,5 @@
   </div>
 </body>
 <script src="popup.js"></script>
+</html>
 </html>

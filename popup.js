@@ -1,5 +1,4 @@
-
-          // Eye icon for default password (must be after editPassword is defined)
+// Eye icon for default password (must be after editPassword is defined)
           const toggleDefaultEye = document.getElementById('toggle-default-eye');
           const editPasswordInput = document.getElementById('edit-password');
           if (toggleDefaultEye && editPasswordInput) {
@@ -220,4 +219,48 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   renderInstances();
+
+  // Export data
+  const exportBtn = document.getElementById('export-data');
+  if (exportBtn) {
+    exportBtn.onclick = function() {
+      chrome.storage.sync.get('loginData', function(data) {
+        const blob = new Blob([JSON.stringify(data.loginData || {}, null, 2)], {type: 'application/json'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'loginData-export.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+    };
+  }
+
+  // Import data
+  const importBtn = document.getElementById('import-data');
+  const importFile = document.getElementById('import-file');
+  if (importBtn && importFile) {
+    importBtn.onclick = function() {
+      importFile.click();
+    };
+    importFile.onchange = function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        try {
+          const imported = JSON.parse(evt.target.result);
+          chrome.storage.sync.set({loginData: imported}, function() {
+            alert('Data imported successfully!');
+            location.reload();
+          });
+        } catch (err) {
+          alert('Invalid file format.');
+        }
+      };
+      reader.readAsText(file);
+    };
+  }
 });

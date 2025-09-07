@@ -9,7 +9,19 @@
     "activeTab"
   ],
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "ChatGPT Image Sep 7, 2025, 05_27_44 PM.png",
+      "32": "ChatGPT Image Sep 7, 2025, 05_27_44 PM.png",
+      "48": "ChatGPT Image Sep 7, 2025, 05_27_44 PM.png",
+      "128": "ChatGPT Image Sep 7, 2025, 05_27_44 PM.png"
+    }
+  },
+  "icons": {
+    "16": "ChatGPT Image Sep 7, 2025, 05_27_44 PM.png",
+    "32": "ChatGPT Image Sep 7, 2025, 05_27_44 PM.png",
+    "48": "ChatGPT Image Sep 7, 2025, 05_27_44 PM.png",
+    "128": "ChatGPT Image Sep 7, 2025, 05_27_44 PM.png"
   },
   "content_scripts": [
     {
